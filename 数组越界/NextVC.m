@@ -6,7 +6,9 @@
 //  Copyright © 2017年 JZ. All rights reserved.
 //
 
+#import "NSArray+ErrorHandle.h"
 #import "NextVC.h"
+#import "NSMutableArray+ErrorHandle.h"
 
 /**
  *  屏幕尺寸宽和高
@@ -27,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.dataSource = @[@"化学", @"生物", @"历史"];
     [self.view addSubview:self.tableView];
 }
 /**
@@ -64,13 +67,19 @@
             [cell addSubview:textFiled];
         }
     }
-    cell.textLabel.text = self.dataSource[indexPath.row];
+    cell.textLabel.text = [self.dataSource objectAtIndexedSubscriptVerify:indexPath.row];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 @end

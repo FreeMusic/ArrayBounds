@@ -10,6 +10,8 @@
 
 @interface NSArray (ErrorHandle)
 //防止数组越界
-- (id)arrayObjectAtIndex:(NSUInteger)index;
+- (id)objectAtIndexVerify:(NSUInteger)index;
+
+- (id)objectAtIndexedSubscriptVerify:(NSUInteger)idx;
 
 @end

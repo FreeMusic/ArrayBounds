@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "NSArray+ErrorHandle.h"
 #import "NextVC.h"
+#import "NSMutableArray+ErrorHandle.h"
 
 /**
  *  屏幕尺寸宽和高
@@ -29,11 +30,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-//    NSString *type = nil;
-//    [self.dataSource addObject:type];
-    [self.dataSource addObject:@"语文"];
-    [self.dataSource addObject:@"数学"];
-    [self.dataSource addObject:@"英语"];
+    NSString *type = nil;
+    //[self.dataSource addObject:type];
+    //[self.dataSource addObject:@"语文"];
+    [self.dataSource addObjectVerify:type];
+    [self.dataSource addObjectVerify:@"语文"];
+    [self.dataSource addObjectVerify:@"数学"];
+    [self.dataSource addObjectVerify:@"英语"];
+//    [self.dataSource arrayInsertObject:@"物理" atIndex:10];
+    [self.dataSource insertObjectVerify:@"物理" atIndex:2];
     
     [self.view addSubview:self.tableView];
 }
@@ -81,7 +86,7 @@
             [cell addSubview:textFiled];
         }
     }
-    cell.textLabel.text = [self.dataSource arrayObjectAtIndex:indexPath.row];
+    cell.textLabel.text = [self.dataSource objectAtIndexVerify:indexPath.row];
     
     return cell;
 }
