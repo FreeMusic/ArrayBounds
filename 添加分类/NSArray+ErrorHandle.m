@@ -34,6 +34,7 @@
 
 +(void)load{
     [super load];
+    //无论怎样 都要保证方法只交换一次
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         //交换NSArray中的objectAtIndex方法
@@ -44,19 +45,20 @@
 }
 
 - (id)sxy_objectAtIndexedSubscript:(NSUInteger)idx{
-    NSLog(@" NSArray数组越界处理  %ld   %ld", idx, self.count);
     if (idx < self.count) {
         return [self sxy_objectAtIndexedSubscript:idx];
     }else{
+        NSLog(@" 你的 NSArray数组已经越界了 但是已经帮你处理好了  %ld   %ld", idx, self.count);
         return nil;
     }
 }
 
 - (id)sxy_objectAtIndex:(NSUInteger)index{
-    NSLog(@" NSArray数组越界处理  %ld   %ld", index, self.count);
     if (index < self.count) {
         return [self sxy_objectAtIndex:index];
     }else{
+        NSLog(@" 你的 NSArray数组已经越界了 但是已经帮你处理好了  %ld   %ld", index, self.count);
+        
         return nil;
     }
 }
