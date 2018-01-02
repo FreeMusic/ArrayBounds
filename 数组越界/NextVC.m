@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataSource = @[@"化学", @"生物", @"历史"];
+    self.dataSource = [NSArray arrayWithObjects:@"语文", @"数学", @"英语", nil];
     [self.view addSubview:self.tableView];
 }
 /**
@@ -63,11 +63,16 @@
         if (indexPath.row < self.dataSource.count) {
             UITextField *textFiled = [[UITextField alloc] init];
             textFiled.frame = CGRectMake(100, 0, kScreenWidth-100, 50);
-            textFiled.placeholder = @"请输入科目。";
+            textFiled.placeholder = @"此处是NSArray的数组越界处理";
             [cell addSubview:textFiled];
+        }else{
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
+            label.textColor = [UIColor blackColor];
+            label.text = @"点击此处去查看NSMutableArray的数组越界处理";
+            [cell addSubview:label];
         }
     }
-    cell.textLabel.text = [self.dataSource objectAtIndexedSubscriptVerify:indexPath.row];
+    cell.textLabel.text = [self.dataSource objectAtIndexVerify:indexPath.row];
     
     return cell;
 }

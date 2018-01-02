@@ -8,6 +8,7 @@
 
 #import "NSArray+ErrorHandle.h"
 #import <objc/runtime.h>
+#import "NSObject+SwizzleMethod.h"
 
 @implementation NSArray (ErrorHandle)
 /**
@@ -30,18 +31,29 @@
         return nil;
     }
 }
+
 //+(void)load{
-//    Method systemMethod = class_getInstanceMethod(objc_getClass("__NSArrayI"), @selector(objectAtIndexedSubscript:));
-//    Method newMethod = class_getInstanceMethod(objc_getClass("__NSArrayI"), @selector(objectAtIndexVerify:));
-////    Method
+//    [super load];
 //
-//    method_exchangeImplementations(systemMethod, newMethod);
+//    //交换NSArray中的objectAtIndex方法
+//    [objc_getClass("__NSArrayI") SystemSelector:@selector(objectAtIndex:) swizzledSelector:@selector(sxy_objectAtIndex:) error:nil];
+//    //交换NSArray中的objectAtIndexedSubscript方法
+//    [objc_getClass("__NSArrayI") SystemSelector:@selector(objectAtIndexedSubscript:) swizzledSelector:@selector(sxy_objectAtIndexedSubscript:) error:nil];
 //}
 //
-//- (id)objectAtIndexedSubscriptVerify:(NSUInteger)idx{
-//    NSLog(@"%ld   %ld", idx, self.count);
+//- (id)sxy_objectAtIndexedSubscript:(NSUInteger)idx{
+//    NSLog(@" NSArray数组越界处理  %ld   %ld", idx, self.count);
 //    if (idx < self.count) {
-//        return [self objectAtIndexedSubscriptVerify:idx];
+//        return [self sxy_objectAtIndexedSubscript:idx];
+//    }else{
+//        return nil;
+//    }
+//}
+//
+//- (id)sxy_objectAtIndex:(NSUInteger)index{
+//    NSLog(@" NSArray数组越界处理  %ld   %ld", index, self.count);
+//    if (index < self.count) {
+//        return [self sxy_objectAtIndex:index];
 //    }else{
 //        return nil;
 //    }

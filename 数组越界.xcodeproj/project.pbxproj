@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052A8E5F1FF6463A0087CD3F /* NSObject+SwizzleMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 052A8E5E1FF6463A0087CD3F /* NSObject+SwizzleMethod.m */; };
 		053517391FF24ECD00533702 /* NSMutableArray+ErrorHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 053517381FF24ECD00533702 /* NSMutableArray+ErrorHandle.m */; };
 		054825811FF1E47900B6FDE3 /* NextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 054825801FF1E47900B6FDE3 /* NextVC.m */; };
 		054825991FF1F16F00B6FDE3 /* NSArray+ErrorHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 054825971FF1F16F00B6FDE3 /* NSArray+ErrorHandle.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		052A8E5D1FF6463A0087CD3F /* NSObject+SwizzleMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SwizzleMethod.h"; sourceTree = "<group>"; };
+		052A8E5E1FF6463A0087CD3F /* NSObject+SwizzleMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SwizzleMethod.m"; sourceTree = "<group>"; };
 		053517371FF24ECD00533702 /* NSMutableArray+ErrorHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ErrorHandle.h"; sourceTree = "<group>"; };
 		053517381FF24ECD00533702 /* NSMutableArray+ErrorHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ErrorHandle.m"; sourceTree = "<group>"; };
 		0548257F1FF1E47900B6FDE3 /* NextVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NextVC.h; sourceTree = "<group>"; };
@@ -94,6 +97,8 @@
 				054825971FF1F16F00B6FDE3 /* NSArray+ErrorHandle.m */,
 				053517371FF24ECD00533702 /* NSMutableArray+ErrorHandle.h */,
 				053517381FF24ECD00533702 /* NSMutableArray+ErrorHandle.m */,
+				052A8E5D1FF6463A0087CD3F /* NSObject+SwizzleMethod.h */,
+				052A8E5E1FF6463A0087CD3F /* NSObject+SwizzleMethod.m */,
 			);
 			path = "添加分类";
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 			files = (
 				053517391FF24ECD00533702 /* NSMutableArray+ErrorHandle.m in Sources */,
 				0574AB0A1FF118660002CC41 /* ViewController.m in Sources */,
+				052A8E5F1FF6463A0087CD3F /* NSObject+SwizzleMethod.m in Sources */,
 				0574AB151FF118670002CC41 /* main.m in Sources */,
 				0574AB071FF118660002CC41 /* AppDelegate.m in Sources */,
 				054825991FF1F16F00B6FDE3 /* NSArray+ErrorHandle.m in Sources */,
