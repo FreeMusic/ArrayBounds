@@ -34,7 +34,7 @@
     }
     
     if (class_addMethod([self class], systemSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))) {
-        
+
         class_replaceMethod([self class], swizzledSelector, method_getImplementation(systemMethod), method_getTypeEncoding(systemMethod));
     }else{
         method_exchangeImplementations(systemMethod, swizzledMethod);

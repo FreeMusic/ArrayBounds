@@ -72,7 +72,7 @@
             [cell addSubview:label];
         }
     }
-    cell.textLabel.text = [self.dataSource objectAtIndexVerify:indexPath.row];
+    cell.textLabel.text = self.dataSource[indexPath.row];
     
     return cell;
 }

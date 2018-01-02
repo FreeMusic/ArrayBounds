@@ -32,31 +32,33 @@
     }
 }
 
-//+(void)load{
-//    [super load];
-//
-//    //交换NSArray中的objectAtIndex方法
-//    [objc_getClass("__NSArrayI") SystemSelector:@selector(objectAtIndex:) swizzledSelector:@selector(sxy_objectAtIndex:) error:nil];
-//    //交换NSArray中的objectAtIndexedSubscript方法
-//    [objc_getClass("__NSArrayI") SystemSelector:@selector(objectAtIndexedSubscript:) swizzledSelector:@selector(sxy_objectAtIndexedSubscript:) error:nil];
-//}
-//
-//- (id)sxy_objectAtIndexedSubscript:(NSUInteger)idx{
-//    NSLog(@" NSArray数组越界处理  %ld   %ld", idx, self.count);
-//    if (idx < self.count) {
-//        return [self sxy_objectAtIndexedSubscript:idx];
-//    }else{
-//        return nil;
-//    }
-//}
-//
-//- (id)sxy_objectAtIndex:(NSUInteger)index{
-//    NSLog(@" NSArray数组越界处理  %ld   %ld", index, self.count);
-//    if (index < self.count) {
-//        return [self sxy_objectAtIndex:index];
-//    }else{
-//        return nil;
-//    }
-//}
++(void)load{
+    [super load];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        //交换NSArray中的objectAtIndex方法
+        [objc_getClass("__NSArrayI") SystemSelector:@selector(objectAtIndex:) swizzledSelector:@selector(sxy_objectAtIndex:) error:nil];
+        //交换NSArray中的objectAtIndexedSubscript方法
+        [objc_getClass("__NSArrayI") SystemSelector:@selector(objectAtIndexedSubscript:) swizzledSelector:@selector(sxy_objectAtIndexedSubscript:) error:nil];
+    });
+}
+
+- (id)sxy_objectAtIndexedSubscript:(NSUInteger)idx{
+    NSLog(@" NSArray数组越界处理  %ld   %ld", idx, self.count);
+    if (idx < self.count) {
+        return [self sxy_objectAtIndexedSubscript:idx];
+    }else{
+        return nil;
+    }
+}
+
+- (id)sxy_objectAtIndex:(NSUInteger)index{
+    NSLog(@" NSArray数组越界处理  %ld   %ld", index, self.count);
+    if (index < self.count) {
+        return [self sxy_objectAtIndex:index];
+    }else{
+        return nil;
+    }
+}
 
 @end
